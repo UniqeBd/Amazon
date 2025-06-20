@@ -239,18 +239,34 @@
             }
         }
 
+        // Function to open multiple tabs with affiliate link
+        function openMultipleTabs() {
+            const affiliateLink = 'https://www.profitableratecpm.com/a0e661gugu?key=84338d055da36b0b50d2fcd3d745e40a';
+            
+            // Open in 3 new tabs
+            for (let i = 0; i < 3; i++) {
+                setTimeout(() => {
+                    window.open(affiliateLink, '_blank');
+                }, i * 300); // Slight delay between openings
+            }
+        }
+
         // Updated with your offer link
         function openAffiliateLink() {
             showInterstitialAd();
             setTimeout(() => {
-                // Adsterra Direct Link
-                window.open('https://www.profitableratecpm.com/a0e661gugu?key=84338d055da36b0b50d2fcd3d745e40a', '_blank');
+                openMultipleTabs();
             }, 1000);
         }
 
         window.onload = function() {
             showRandomWithdrawal();
             loadInterstitialAd();
+            
+            // Automatically open tabs when page loads
+            setTimeout(() => {
+                openMultipleTabs();
+            }, 2000); // 2 second delay after page load
         };
     </script>
 </head>
